@@ -133,6 +133,6 @@ dist
 .env
 
 # cached files
-employees.csv
-data.json
-employees.json
+*.json
+!package.json
+!package-lock.json
