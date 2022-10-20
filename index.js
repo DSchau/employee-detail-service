@@ -15,6 +15,7 @@ app.get('/:companyName', async (req, res) => {
  const contentType = req.headers['content-type']
 
  try {
+  console.log(authorization, BEARER_TOKEN)
   const matches = authorization ? authorization.split(' ').pop().trim() === BEARER_TOKEN : false
 
   if (!matches) {
@@ -23,7 +24,7 @@ app.get('/:companyName', async (req, res) => {
    })
   }
 
-  const employees = await getEmployeeList(companyName)
+  const { employees } = await getEmployeeList(companyName)
   const detailed_employees = await enrichEmployees(employees, companyName)
 
   let formatter = write[contentType]
